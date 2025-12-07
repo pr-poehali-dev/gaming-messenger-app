@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import SplashScreen from '@/components/SplashScreen';
@@ -192,9 +192,13 @@ const Index = () => {
             className="relative group"
           >
             <Avatar className="w-12 h-12 border-2 border-primary transition-transform group-hover:scale-110">
-              <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-2xl">
-                {userProfile.avatar}
-              </AvatarFallback>
+              {userProfile.avatar.startsWith('data:') || userProfile.avatar.startsWith('http') ? (
+                <AvatarImage src={userProfile.avatar} alt="User avatar" />
+              ) : (
+                <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-2xl">
+                  {userProfile.avatar}
+                </AvatarFallback>
+              )}
             </Avatar>
             <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-background" />
           </button>
@@ -410,9 +414,13 @@ const Index = () => {
             <div className="p-4 animate-fade-in">
               <div className="text-center mb-6">
                 <Avatar className="w-24 h-24 mx-auto mb-4 border-4 border-primary">
-                  <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-4xl">
-                    {userProfile.avatar}
-                  </AvatarFallback>
+                  {userProfile.avatar.startsWith('data:') || userProfile.avatar.startsWith('http') ? (
+                    <AvatarImage src={userProfile.avatar} alt="User avatar" />
+                  ) : (
+                    <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-4xl">
+                      {userProfile.avatar}
+                    </AvatarFallback>
+                  )}
                 </Avatar>
                 <h3 className="text-xl font-bold mb-1">{userProfile.nickname}</h3>
                 <p className="text-sm text-muted-foreground">Уровень 47 • Elite Gamer</p>
@@ -544,9 +552,13 @@ const Index = () => {
                     </div>
                     {msg.sender === 'me' && (
                       <Avatar className="w-10 h-10">
-                        <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-lg">
-                          {msg.avatar}
-                        </AvatarFallback>
+                        {msg.avatar.startsWith('data:') || msg.avatar.startsWith('http') ? (
+                          <AvatarImage src={msg.avatar} alt="Your avatar" />
+                        ) : (
+                          <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-lg">
+                            {msg.avatar}
+                          </AvatarFallback>
+                        )}
                       </Avatar>
                     )}
                   </div>
