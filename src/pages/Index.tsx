@@ -55,7 +55,7 @@ const Index = () => {
     <div className="flex h-screen bg-background text-foreground overflow-hidden">
       <aside className="w-20 bg-card border-r border-border flex flex-col items-center py-6 gap-6">
         <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-bold text-xl">
-          G
+          R
         </div>
         
         <nav className="flex flex-col gap-4 flex-1">
