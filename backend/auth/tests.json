@@ -1,0 +1,25 @@
+{
+  "tests": [
+    {
+      "name": "Register new user",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "action": "register",
+        "phone": "+79001234567",
+        "nickname": "TestUser",
+        "avatar": "🎮"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "user": {
+          "phone": "string",
+          "nickname": "string",
+          "inviteCode": "string"
+        },
+        "token": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
